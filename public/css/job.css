@@ -1,0 +1,8 @@
+@import url("customize-bar.css");
+@import url("list-job.css");
+
+.job-display {
+  display: flex;
+  margin: 5% 2%;
+  gap: 20px;
+}

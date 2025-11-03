@@ -1,0 +1,87 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  padding: 5px 5%;
+  z-index: 25;
+}
+
+.site-name {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.header-nav {
+  display: flex;
+  min-width: 50%;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1rem;
+  color: white;
+}
+
+.header-nav-item {
+  display: inline-block;
+  padding: 2%;
+  width: fit-content;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.log-res {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  width: 15%;
+}
+
+.log-btn {
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  height: 80%;
+  width: 100%;
+  font-size: 1rem;
+}
+.reg-btn {
+  background-color: #309689;
+  font-weight: 500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  height: 80%;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.hugeicons--job-search {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.5'%3E%3Cpath stroke-linecap='round' d='M11.007 21H9.605c-3.585 0-5.377 0-6.491-1.135S2 16.904 2 13.25c0-3.653 0-5.48 1.114-6.615S6.02 5.5 9.605 5.5h3.803c3.585 0 5.378 0 6.492 1.135c.857.873 1.054 2.156 1.1 4.365'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M20.017 20.023L22 22m-.947-4.474a3.527 3.527 0 1 0-7.053 0a3.527 3.527 0 0 0 7.053 0'/%3E%3Cpath d='m16 5.5l-.1-.31c-.495-1.54-.742-2.31-1.331-2.75C13.979 2 13.197 2 11.63 2h-.263c-1.565 0-2.348 0-2.937.44c-.59.44-.837 1.21-1.332 2.75L7 5.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.logo-and-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}

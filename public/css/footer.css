@@ -1,0 +1,65 @@
+footer {
+  position: relative;
+  bottom: 0;
+  background-color: black;
+  height: 250px;
+  width: 100%;
+}
+
+.contacts {
+  margin-bottom: auto;
+  height: 50%;
+  width: 40%;
+  top: 40px;
+  left: 40%;
+  position: relative;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contacts .logo-and-name .site-name {
+  font-size: 1rem;
+}
+
+.credit-links {
+  padding: 0 2.5%;
+  display: flex;
+  font-size: 0.75rem;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.icons-contact {
+  display: flex;
+  gap: 10px;
+}
+
+.icons-contact img {
+  height: 30px;
+  aspect-ratio: 1;
+}
+
+.copyright {
+  opacity: 50%;
+}
+
+.policy-term {
+  color: white;
+  display: flex;
+  margin-left: auto;
+  justify-content: space-evenly;
+  gap: 15px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.policy-term div {
+  cursor: pointer;
+  text-decoration: underline;
+}
