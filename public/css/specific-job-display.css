@@ -1,24 +1,8 @@
-.latest-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.one-job-display {
+  margin: 5% 10px 2% 10px;
   position: relative;
-  width: 100%;
-  padding: 15px;
-  margin: 15px 0;
 }
-
-/* .job-card {
-  display: block;
-  width: 100%;
-  height: 150px;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
-} */
-
-.job-card {
-  /* Layout properties for the entire card */
+.job-card-single {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Pushes the details button to the right */
@@ -30,21 +14,19 @@
 
   /* Visual styling */
   background-color: white;
-  border: 1px solid #e0e0e0; /* Subtle border (lighter than your original) */
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Lighter, modern shadow */ /* Use a common, clean font */
-  position: relative; /* Needed to position the badge and bookmark */
+  /* border: 1px solid #e0e0e0; */ /* Subtle border (lighter than your original) */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); */ /* Lighter, modern shadow */ /* Use a common, clean font */
+  position: relative;
 }
 
-/* --- Top-Right Elements (Badge and Bookmark/Save) --- */
-/* Note: You'll need to add HTML for these elements inside .job-card */
-.job-card .top-meta {
+.job-card-single .top-meta {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.job-card .time-ago-badge {
+.job-card-single .time-ago-badge {
   background-color: #e6f7ee; /* Light green/teal background */
   color: var(--main-green); /* Darker teal text */
   font-size: 12px;
@@ -55,7 +37,7 @@
   margin-left: 15px;
 }
 
-.job-right-element {
+.job-right-element-single {
   position: absolute;
   right: 0;
   margin-right: 20px;
@@ -66,7 +48,7 @@
   justify-content: space-between;
 }
 
-.job-card .bookmark-icon {
+.job-card-single .bookmark-icon {
   /* Assuming a div or button for the icon */
   color: var(--main-green); /* Dark gray for the icon */
   cursor: pointer;
@@ -75,7 +57,7 @@
 }
 
 /* --- Main Content (Title, Company, Icons) --- */
-.job-card .job-info-main {
+.job-card-single .job-info-main {
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -85,7 +67,7 @@
 }
 
 /* Assuming the image/logo is also within the main info area */
-.job-card .logo {
+.job-card-single .logo {
   width: 30px;
   height: 30px;
   margin-right: 10px;
@@ -94,7 +76,7 @@
   /* You would load the actual image here */
 }
 
-.job-card .title-comp {
+.job-card-single .title-comp {
   display: flex;
   flex-direction: column;
   flex-grow: 9;
@@ -104,7 +86,7 @@
   margin-left: 15px;
 }
 
-.job-card .job-title {
+.job-card-single .job-title {
   font-size: 1.5rem;
   font-weight: 600;
   color: #333;
@@ -113,7 +95,7 @@
 }
 
 /* This is the company name line below the title */
-.job-card .job-company {
+.job-card-single .job-company {
   font-size: 14px;
   color: #555;
   margin: 3px 0 0 0;
@@ -121,7 +103,7 @@
 }
 
 /* --- Secondary Info (Icons and Text) --- */
-.job-card .secondary-info {
+.job-card-single .secondary-info {
   display: flex;
   /* Only display the relevant job details from the image: Category, Type, Wage, Location */
   flex-wrap: wrap; /* Ensure details wrap if necessary */
@@ -130,32 +112,32 @@
   margin-left: 15px;
 }
 
-.info-job-summary {
+.info-job-summary-single {
   display: flex;
   gap: 5px;
   align-items: center;
 }
 
-.info-job-summary:nth-child(1) {
+.info-job-summary-single:nth-child(1) {
   min-width: 200px;
 }
-.info-job-summary:nth-child(2) {
+.info-job-summary-single:nth-child(2) {
   min-width: 100px;
 }
-.info-job-summary:nth-child(3) {
+.info-job-summary-single:nth-child(3) {
   min-width: 130px;
 }
 
-.info-job-summary svg {
+.info-job-summary-single svg {
   color: var(--main-green);
 }
 
-.info-job-summary p {
+.info-job-summary-single p {
   text-align: center;
 }
 
 /* Style for each detail line (Category, Type, Wage, Location) */
-.job-card .secondary-info p {
+.job-card-single .secondary-info p {
   display: flex;
   align-items: center;
   font-size: 12px;
@@ -166,39 +148,9 @@
 
 /* --- You'll need to style the icons/svgs here (e.g., using :before) --- */
 /* For example (assuming you use Font Awesome or similar): */
-.job-card .job-category::before {
+.job-card-single .job-category::before {
   /* content: '\f218'; /* Example Font Awesome icon for briefcase */
   /* font-family: 'Font Awesome 5 Free'; */
   margin-right: 8px;
   color: #4a90e2; /* Icon color */
-}
-/* This is a crucial step to match the visual look */
-
-/* --- Job Details Button --- */
-/* I've assumed a class of .job-details-btn for the button in the image */
-.job-card .job-details-btn {
-  /* Box Model */
-  padding: 10px 20px;
-  margin-top: 25px; /* Align with the second line of text/icons */
-
-  /* Visual Styling */
-  background-color: var(--main-green); /* Teal/Green color from the image */
-
-  border: none;
-  border-radius: 5px;
-
-  cursor: pointer;
-  align-self: flex-end; /* Puts the button at the bottom right */
-}
-
-.job-card .job-details-btn:hover {
-  background-color: var(--main-green-darker); /* Darker on hover */
-}
-
-.job-details-btn button {
-  background-color: transparent;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  text-decoration: none; /* If it's an anchor tag */
 }

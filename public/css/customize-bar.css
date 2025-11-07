@@ -1,18 +1,10 @@
-.customize-bar {
+#filter-bar {
   height: 900px;
   width: 100%;
   flex: 1;
   background-color: var(--main-green-lighter);
   border-radius: 15px;
   padding: 0 15px;
-}
-
-.customize-bar button {
-  cursor: pointer;
-}
-
-.customize-bar button:hover {
-  opacity: 70%;
 }
 
 .filter-section {
@@ -30,8 +22,8 @@
 .radio-group label {
   font-size: 0.9rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .show-more-btn {
@@ -63,6 +55,12 @@
   font-weight: 600;
   padding: 5px;
   border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  opacity: 70%;
 }
 
 .radio-group input {

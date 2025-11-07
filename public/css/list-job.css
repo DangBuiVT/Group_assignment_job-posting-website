@@ -9,7 +9,7 @@
   height: 50px;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 15px;
   padding: 0 5px;
 }
@@ -54,4 +54,59 @@
 .time-toggle .inactive {
   opacity: 0;
   pointer-events: none;
+}
+
+.title-logo-comp {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  height: 50%;
+  column-gap: 10px;
+  width: 100%;
+}
+
+.title-logo-comp h3 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0; /* Remove default margin from h3 */
+  line-height: 1.2;
+}
+.title-logo-comp p {
+  font-size: 1.25rem;
+  color: #555;
+  margin: 3px 0 0 0;
+  font-weight: 400; /* Regular weight */
+}
+
+.logo-img {
+  position: relative;
+  grid-row: 1 / span 2;
+  grid-column: 1;
+  height: 100%;
+
+  min-width: 90px;
+}
+
+.logo-img img {
+  object-fit: contain;
+  /* 1. Remove max-height: 50px; */
+  height: 100%; /* NEW: Match the container's height */
+  max-width: 100px;
+  border-radius: 50%;
+  /* You may want to set max-height: 100%; as a fallback, 
+       but 100% height is usually sufficient when combined with object-fit. */
+  max-height: 100%;
+}
+
+.job-info-main-full {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  height: 100%;
+  margin-left: 15px;
+}
+
+.job-info-main-full .secondary-info {
+  margin-left: 0;
 }

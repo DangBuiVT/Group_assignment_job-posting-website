@@ -1,46 +1,52 @@
-<?php /* echo "<!-- VIEW SCOPE DEBUG -->\n<pre>";
-echo "Defined vars in view:\n";
-var_dump(array_keys(get_defined_vars()));
-// hoặc show giá trị cụ thể:
-echo "\$show_statement = ";
-var_dump(isset($show_statement) ? $show_statement : 'UNSET');
-echo "</pre>\n"; */
+<?php
+/* include_once "config/db.php";
+
+// Check if job ID is provided
+if (isset($_GET['id'])) {
+    $job_id = intval($_GET['id']); // sanitize input
+
+    // SQL query to fetch job details (including category and employer)
+    $sql = "
+        SELECT 
+            j.title,
+            j.location,
+            j.description,
+            j.requirements,
+            j.salary,
+            j.deadline,
+            c.category_name,
+            e.company_name
+        FROM Jobs j
+        JOIN JobCategories c ON j.category_id = c.id
+        JOIN Employers e ON j.employer_id = e.id
+        WHERE j.id = ?
+    ";
+
+    // Prepare and execute the query
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $job_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $job = $result->fetch_assoc();
+    } else {
+        echo "<p>No job found with this ID.</p>";
+        exit;
+    }
+
+    $stmt->close();
+} else {
+    echo "<p>No job ID provided.</p>";
+    exit;
+} */
 ?>
 
-<div class="list-job">
-  <div class="show-and-sort">
-    <div class="show"><?php echo $show_statement?></div>
-    <div class="time-toggle">
-      <button id="sort-toggle" class="sort-time-toggle">
-        <?php if ($isDescending) {?>
-        <svg
-          id="sort-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          width="15"
-          height="15"
-        >
-          <path fill="currentColor" d="M7.5 12L0 4h15z" />
-        </svg>
-        <div id="sort-text" style="font-weight: 600">From latest</div>
-        <?php } else {?>
-        <svg
-          id="sort-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          width="15"
-          height="15"
-        >
-          <path fill="currentColor" d="m7.5 3l7.5 8H0z" />
-        </svg>
-        <div id="sort-text" style="font-weight: 600">From earliest</div>
-        <?php }?>
-      </button>
-    </div>
-  </div>
-  <?php foreach ($jobs_to_display as $job): ?>
-  <div class="job-card">
-    <?php $string_ago = ""; if ($job['days_ago'] >= 1){ $string_ago =
-    $job['days_ago'] . " day"; } elseif ($job['hours_ago']>=1){ $string_ago =
-    $job['hours_ago'] . " hours"; } else { $string_ago = $job['minutes_ago'] . "
+<div class="one-job-display">
+    <div class="job-card-single">
+    <?php $string_ago = ""; if ($job_specific['days_ago'] >= 1){ $string_ago =
+    $job_specific['days_ago'] . " day"; } elseif ($job_specific['hours_ago']>=1){ $string_ago =
+    $job_specific['hours_ago'] . " hours"; } else { $string_ago = $job_specific['minutes_ago'] . "
     minutes"; }?>
     <div class="time-ago-badge">
       <?= $string_ago?>
@@ -49,16 +55,16 @@ echo "</pre>\n"; */
     <div class="job-info-main-full">
       <div class="title-logo-comp">
         <div class="logo-img">
-          <img src="<?= "/Group_assignment/public/images/" . $job['logo']?>"
+          <img src="<?= "/Group_assignment/public/images/" . $job_specific['logo']?>"
           alt="">
         </div>
-        <h3 class="job-title-full"><?= htmlspecialchars($job['title']) ?></h3>
+        <h3 class="job-title-full"><?= htmlspecialchars($job_specific['title']) ?></h3>
         <p class="job-company-full">
-          <?= htmlspecialchars($job['company_name']) ?>
+          <?= htmlspecialchars($job_specific['company_name']) ?>
         </p>
       </div>
       <div class="secondary-info">
-        <div class="info-job-summary">
+        <div class="info-job-summary-single">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -71,7 +77,7 @@ echo "</pre>\n"; */
             />
           </svg>
           <p class="job-category">
-            <?= htmlspecialchars($job['category_name']) ?>
+            <?= htmlspecialchars($job_specific['category_name']) ?>
           </p>
         </div>
         <div class="info-job-summary">
@@ -86,7 +92,7 @@ echo "</pre>\n"; */
               d="M12 20a7 7 0 0 1-7-7a7 7 0 0 1 7-7a7 7 0 0 1 7 7a7 7 0 0 1-7 7m7.03-12.61l1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0-9 9a9 9 0 0 0 9 9c5 0 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61M11 14h2V8h-2m4-7H9v2h6z"
             />
           </svg>
-          <p class="job-type"><?= htmlspecialchars($job['job_type']) ?></p>
+          <p class="job-type"><?= htmlspecialchars($job_specific['job_type']) ?></p>
         </div>
         <div class="info-job-summary">
           <svg
@@ -100,7 +106,7 @@ echo "</pre>\n"; */
               d="M8.4 21q-2.275 0-3.838-1.562T3 15.6q0-.95.325-1.85t.925-1.625L7.8 7.85L5.375 3h13.25L16.2 7.85l3.55 4.275q.6.725.925 1.625T21 15.6q0 2.275-1.575 3.838T15.6 21zm3.6-5q-.825 0-1.412-.587T10 14t.588-1.412T12 12t1.413.588T14 14t-.587 1.413T12 16M9.625 7h4.75l1-2h-6.75zM8.4 19h7.2q1.425 0 2.413-.987T19 15.6q0-.6-.213-1.162t-.587-1.013L14.525 9H9.5l-3.7 4.4q-.375.45-.587 1.025T5 15.6q0 1.425.988 2.413T8.4 19"
             />
           </svg>
-          <p class="job-wage">$<?= htmlspecialchars($job['salary']) ?>/month</p>
+          <p class="job-wage">$<?= htmlspecialchars($job_specific['salary']) ?>/month</p>
         </div>
         <div class="info-job-summary">
           <svg
@@ -118,11 +124,11 @@ echo "</pre>\n"; */
               />
             </g>
           </svg>
-          <p class="job-location"><?= htmlspecialchars($job['location']) ?></p>
+          <p class="job-location"><?= htmlspecialchars($job_specific['location']) ?></p>
         </div>
       </div>
     </div>
-    <div class="job-right-element">
+    <div class="job-right-element-single">
       <div class="bookmark-icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -136,18 +142,15 @@ echo "</pre>\n"; */
           />
         </svg>
       </div>
-      <a href="?page=job-single&jid=<?= $job['id']?>" class="job-details-btn">
-        <button type="button" >Job Details</button>
-      </a>
     </div>
   </div>
-  <?php endforeach ?>
-  <div class="pagination">
-    <?php if ($page >
-    1): ?> <a href="?page=job&page-order=<?= $page - 1 ?>">Previous</a>
-    <?php endif; ?>
-    <?php if ($page_max < $total_jobs): ?>
-    <a href="?page=job&page-order=<?= $page + 1 ?>">Next</a>
-    <?php endif; ?>
-  </div>
+    <div class="job-title"><strong>Job Title:</strong> <?= htmlspecialchars($job_specific['title']) ?></div>
+    <div class="job-location"><strong>Location:</strong> <?= htmlspecialchars($job_specific['location']) ?></div>
+    <div class="jd"><strong>Description:</strong> <?= nl2br(htmlspecialchars($job_specific['description'])) ?></div>
+    <div class="requirements-job"><strong>Requirements:</strong> <?= nl2br(htmlspecialchars($job_specific['requirements'])) ?></div>
+    <div class="experience"><strong>Experience:</strong> <?= htmlspecialchars($job_specific['min_experience_years']) ?> years</div>
+    <div class="degree"><strong>Degree:</strong> <?= htmlspecialchars($job_specific['min_degree']) ?></div>
+    <div class="salary-amount"><strong>Salary:</strong> $<?= htmlspecialchars($job_specific['salary']) ?></div>
+    <div class="app-dl"><strong>Application Deadline:</strong> <?= htmlspecialchars($job_specific['deadline']) ?></div>
+    <div class="job-cat"><strong>Category:</strong> <?= htmlspecialchars($job_specific['category_name']) ?></div>
 </div>

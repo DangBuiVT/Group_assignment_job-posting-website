@@ -21,4 +21,9 @@ if (isset($_GET['action'])) {
         echo "<p>Invalid authentication action specified.</p>";
     }
     ?>
+    <?php if ($mode === 'login') {?>
+        <a href=<?php echo "/Group_assignment/public/index.php?page=auth&action=signup" ?> class="switch-link">Don't have an account?</a>
+    <?php } else {?>
+        <a href=<?php echo "/Group_assignment/public/index.php?page=auth&action=login" ?> class="switch-link">Already have an account?</a>
+    <?php }?>
 </div>

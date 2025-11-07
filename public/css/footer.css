@@ -2,7 +2,7 @@ footer {
   position: relative;
   bottom: 0;
   background-color: black;
-  height: 250px;
+  height: 20vh;
   width: 100%;
 }
 
@@ -10,7 +10,7 @@ footer {
   margin-bottom: auto;
   height: 50%;
   width: 40%;
-  top: 40px;
+  top: 25px;
   left: 40%;
   position: relative;
   align-items: flex-start;

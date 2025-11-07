@@ -1,0 +1,58 @@
+.hero-search {
+  position: relative;
+  top: 0;
+  background-color: black;
+  height: 50vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.call {
+  font-family: Inter, sans-serif;
+}
+
+.subcall-input {
+  position: relative;
+  margin-top: 40px;
+  height: 50px;
+  width: 40%;
+}
+
+.subcall-input input {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  color: black;
+  font-size: 1.3rem;
+  padding: 10px 5%;
+}
+
+.call {
+  color: white;
+  font-size: 4rem;
+}
+
+.job-search-submit {
+  position: absolute;
+  right: 0;
+  margin: 1.5px 0;
+  height: 95%;
+  margin-right: 2px;
+  background-color: black;
+  border-radius: 50%;
+  width: 47px;
+  overflow: hidden;
+}
+
+.job-search-submit img {
+  object-fit: contain;
+  display: block;
+  height: 30px;
+  aspect-ratio: 1;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

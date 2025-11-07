@@ -4,16 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const sortIcon = document.getElementById("sort-icon");
   const sortText = document.getElementById("sort-text");
 
-  let isDescending = true;
-
   if (sortBtn) {
     sortBtn.addEventListener("click", () => {
-      isDescending = !isDescending;
+      const params = new URLSearchParams(window.location.search);
+      const currentSort = params.get("sort");
 
-      sortText.textContent = isDescending ? "From latest" : "From first";
-      sortIcon.innerHTML = isDescending
-        ? '<path fill="currentColor" d="M7.5 12L0 4h15z"/>'
-        : '<path fill="currentColor" d="m7.5 3l7.5 8H0z"/>';
+      // toggle between asc and desc
+      const newSort = currentSort === "asc" ? "desc" : "asc";
+
+      // set the new sort value
+      params.set("sort", newSort);
+
+      /* sortText.textContent = newSort === "desc" ? "From latest" : "From first";
+      sortIcon.innerHTML =
+        newSort === "desc"
+          ? '<path fill="currentColor" d="M7.5 12L0 4h15z"/>'
+          : '<path fill="currentColor" d="m7.5 3l7.5 8H0z"/>'; */
+
+      // reload with updated query string
+      window.location.href = `${window.location.pathname}?${params.toString()}`;
     });
   }
 
@@ -52,7 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (salSlider) {
     salSlider.addEventListener("change", () => {
       const salSliderValue = salSlider.value;
-      salDisp.innerText = `Salary: $${salSliderValue * 100}`;
+      salDisp.innerText = `Max salary: $${
+        Math.round(salSliderValue / 100) * 100
+      }`;
     });
   }
 
