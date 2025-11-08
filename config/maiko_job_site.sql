@@ -82,7 +82,7 @@ CREATE TABLE `jobs` (
   `location` varchar(150) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `requirements` text DEFAULT NULL,
-  `job_type` enum('Full-time','Part-time','Freelance','') DEFAULT NULL,
+  `job_type` enum('Full-time','Part-time','Freelance') DEFAULT NULL,
   `min_experience_years` tinyint(3) UNSIGNED DEFAULT NULL,
   `min_degree` enum('None','High School','Associate','Bachelor','Master','PhD') DEFAULT 'None',
   `salary` decimal(10,0) DEFAULT NULL,
